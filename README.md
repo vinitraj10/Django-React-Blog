@@ -1,5 +1,5 @@
 # Overview
-This application helps the user to Read,Create,Delete,Update the Blog post,The app uses Django Rest Framework For the restful api and React and Redux for managing The view and the application state.
+This application helps the user to Read,Create,Delete,Update the Blog post,The app uses django for the server side and React for the client side of the application.
 
 <h3>Feautures:-</h3>
 <ul>
