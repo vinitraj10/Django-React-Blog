@@ -31,7 +31,7 @@ app\scripts\activate
 ```
 Install Dependencies:-
 ```
-cd Blog
+cd Backend
 pip install -r requirements.txt
 ```
 Make Migrations:-
