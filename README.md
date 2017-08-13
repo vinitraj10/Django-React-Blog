@@ -43,7 +43,7 @@ Start server for your REST-API:-
 ```
 python manage.py runserver
 ```
-#Frontend Setup:-
+# Frontend Setup:-
 Go to root and Open another terminal window
 ```
 cd Frontend
