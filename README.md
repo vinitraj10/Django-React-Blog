@@ -32,7 +32,7 @@ app\scripts\activate
 Install Dependencies:-
 ```
 cd Blog
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 Make Migrations:-
 ```
