@@ -1,21 +1,3 @@
-A simple boilerplate code for setting up the react with redux project on your local machine.
+##Frontend
 
-## PROJECT SETUP 
-
-clone the repo:-
-
-```
-git clone https://github.com/vinitraj10/React-Redux-Bolierplate
-```
-
-Install dependencies
-
-```
-npm install
-```
-
-Run on http://localhost:8080:-
-
-```
-npm run dev
-```
+This is the Frontend part of this app,In this I have used React and Redux for building my client side of the application for making api calls to the server side and re render to our client side of the application.
