@@ -5,6 +5,11 @@ from rest_framework.generics import (
 	RetrieveAPIView,
 	RetrieveUpdateAPIView
 )
+
+from rest_framework.permissions import(
+	IsAuthenticated
+)
+
 from post.serializers import (
 	PostCreateSerializer,
 	PostListSerializer,
