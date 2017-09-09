@@ -7,7 +7,7 @@ from rest_framework.generics import (
 )
 
 from rest_framework.permissions import(
-	IsAuthenticated
+	IsAuthenticatedOrReadOnly
 )
 
 from post.serializers import (
@@ -30,6 +30,7 @@ class PostDeleteView(DestroyAPIView):
 class PostListView(ListAPIView):
 	queryset=Post.objects.all()
 	serializer_class=PostListSerializer
+	permission_classes = [IsAuthenticatedOrReadOnly]
 
 class PostDetailView(RetrieveAPIView):
 	queryset=Post.objects.all()
