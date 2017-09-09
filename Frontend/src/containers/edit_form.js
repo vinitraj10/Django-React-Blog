@@ -1,22 +1,31 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {Field,reduxForm} from 'redux-form';
-import {Link} from 'react-router-dom';
+import {Link,withRouter} from 'react-router-dom';
 import {renderInput} from '../utils/redux-form-fields';
-import {editForm} from '../actions';
+import {editPost} from '../actions';
 
 class EditForm extends Component{
+	formSubmit(formValue){
+		const {data} = this.props.data;
+		//console.log(data.id);
+		this.props.editPost(formValue,data.id,()=>{
+			this.props.history.push(`/view_post/${data.id}`);
+		});
+	}
 	componentDidMount() {
+		const {data} = this.props.data;
 		this.props.initialize({
-			title:this.props.data.data.title,
-			content:this.props.data.data.content
+			title:data.title,
+			content:data.content
 		});
 	}
 	render(){
+		const {handleSubmit} = this.props;
 		const {data} = this.props.data;
-		console.log(this.props);
+		//console.log(this.props);
 		return(
-			<form>
+			<form onSubmit={handleSubmit(this.formSubmit.bind(this))}>
 				<Field component={renderInput}
 					divClassName="form-group"
 					label="Title"
@@ -40,10 +49,11 @@ class EditForm extends Component{
 	}
 }
 
+EditForm = withRouter(EditForm);
 EditForm = reduxForm({
 	form:'EditForm',
 	fields:['title','content'],
 })(EditForm);
 
 
-export default connect(null,{editForm})(EditForm);
+export default connect(null,{editPost})(EditForm);

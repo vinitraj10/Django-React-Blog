@@ -13,7 +13,8 @@ export const DELETED_POST = 'DELETED_POST';
 export const FETCHING_POST = 'FETCHING_POST';
 export const FETCHED_POST = 'FETCHED_POST';
 
-export const CHANGE_MODE = 'CHANGE_MODE';
+export const EDITING_POST = 'EDITING_POST';
+export const EDITED_POST = 'EDITED_POST';
 
 const root_url = "http://localhost:8000/";
 
@@ -35,12 +36,14 @@ export function getBlogs(){
 
 }
 
-export function createPost(fromValue){
+export function createPost(fromValue,callback){
 	const sub_url = "blog/api/create/";
 	const url = `${root_url}${sub_url}`;
 	//console.log(props);
 
-	const request = axios.post(url,fromValue);
+	const request = axios
+		.post(url,fromValue)
+		.then(() => callback());
 
 	return {
 		type:CREATED_POST,
@@ -63,8 +66,8 @@ export function deletePost(id,callback){
 	return (dispatch) => {
 		dispatch({type:DELETING_POST});
 		request.then(()=>{
-			callback();
 			dispatch({type:DELETED_POST});
+			callback();
 		});
 	}
 
@@ -82,7 +85,16 @@ export function viewPost(id){
 	}
 }
 
-export function editPost(fromValue){
+export function editPost(fromValue,id,callback){
 	console.log(fromValue);
-	return{type:rand};
+	const sub_url = `blog/api/update/${id}/`;
+	const url = `${root_url}${sub_url}`;
+	const request = axios.put(url,fromValue);
+	return (dispatch) =>{
+		dispatch({type:EDITING_POST});
+		request.then((response)=>{
+			dispatch({type:EDITED_POST});
+			callback();
+		});
+	}
 }

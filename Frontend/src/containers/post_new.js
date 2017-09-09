@@ -5,15 +5,10 @@ import {createPost} from "../actions/index";
 import {Link} from "react-router-dom";
 
 class PostNew extends Component{
-	static contextTypes = {
-		router : PropTypes.object,
-	};
-
 	onSubmit(formValue){
-		this.props.createPost(formValue)
-		.then(()=>{
-			this.context.router.history.push("/");
-		});
+		this.props.createPost(formValue,()=>{
+			 this.props.history.push("/");
+		})
 	}
 
 	render(){
