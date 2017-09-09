@@ -30,7 +30,6 @@ class PostDeleteView(DestroyAPIView):
 class PostListView(ListAPIView):
 	queryset=Post.objects.all()
 	serializer_class=PostListSerializer
-	permission_classes = [IsAuthenticatedOrReadOnly]
 
 class PostDetailView(RetrieveAPIView):
 	queryset=Post.objects.all()
