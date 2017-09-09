@@ -31,3 +31,10 @@ export function signin(formValue,callback){
 		});
 	}
 }
+
+export function singout(){
+	localStorage.removeItem('token');
+	return (dispatch) =>{
+		dispatch({type:UNAUTH_USER});
+	}
+}

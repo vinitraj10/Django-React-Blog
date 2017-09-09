@@ -9,6 +9,7 @@ const rootReducer = combineReducers({
 	blogs:BlogReducer,
 	form:formReducer,
 	newpost:NewBlogReducer,
-	post:SinglePostReducer
+	post:SinglePostReducer,
+	auth:authReducer
 })
 export default rootReducer;
