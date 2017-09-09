@@ -7,7 +7,8 @@ export const ERROR = "ERROR";
 export const CREATING_POST = "CREATING_POST";
 export const CREATED_POST = "CREATE_POST";
 
-export const POST_DELETING = 'POST_DELETING';
+export const DELETING_POST = 'DELETING_POST';
+export const DELETED_POST = 'DELETED_POST';
 
 export const FETCHING_POST = 'FETCHING_POST';
 export const FETCHED_POST = 'FETCHED_POST';
@@ -52,30 +53,28 @@ export function createPost(fromValue){
 
 }
 
-export function deletePost(id){
+export function deletePost(id,callback){
 	const sub_url = `blog/api/delete/${id}`;
 	const url = `${root_url}${sub_url}`;
-	const blog_url = `${root_url}blog/api`;
 	const request = axios.delete(url);
-	return (dispatch) =>{
-		dispatch({type:POST_DELETING});
+
+	return (dispatch) => {
+		dispatch({type:DELETING_POST});
 		request.then(()=>{
-			console.log("Inside blogs");
-			axios.get(blog_url)
-			.then((response)=>{
-				dispatch({type:FETCHED_BLOG,payload:response.data});
-			})
+			callback();
+			dispatch({type:DELETED_POST});
 		});
 	}
+
 }
 
 export function viewPost(id){
 	const sub_url = `blog/api/detail/${id}`;
 	const url = `${root_url}${sub_url}`;
+	const request = axios.get(url);
 	return (dispatch) =>{
 		dispatch({type:FETCHING_POST});
-		axios.get(url)
-		.then((response)=>{
+		request.then((response)=>{
 			dispatch({type:FETCHED_POST,payload:response.data});
 		});
 	}

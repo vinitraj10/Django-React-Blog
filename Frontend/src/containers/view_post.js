@@ -11,10 +11,10 @@ class ViewPost extends Component{
 		this.props.viewPost(id);
 	}
 	render(){
-		const {isFetching,isFetched,data} = this.props.post;
+		const {isFetching,isFetched} = this.props.post;
 		return(
 			<div className="container">
-				{isFetching?<Loading/>:(isFetched?<PostDetail data={data}/>:<Loading/>)}
+				{isFetching?<Loading/>:(isFetched?<PostDetail data={this.props}/>:<Loading/>)}
 			</div>
 		)
 	}
