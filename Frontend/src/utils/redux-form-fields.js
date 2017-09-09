@@ -1,10 +1,10 @@
 import React from 'react';
 
-export const renderInput = ({divClassName,inputClassName,input,label,type,placeholder,meta:{touched,error},disabled}) =>{
+export const renderInput = ({input,label,type,placeholder,meta:{touched,error},disabled}) =>{
 	return(
-		<div className={divClassName}>
+		<div className="form-group">
 		  <label className="form-label">{label}</label>
-		  <input className={inputClassName} type={type} placeholder={placeholder} {...input}/>
+		  <input className="form-input input-lg" type={type} placeholder={placeholder} {...input}/>
 		</div>
 	);
 };

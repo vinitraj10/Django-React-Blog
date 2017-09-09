@@ -27,16 +27,12 @@ class EditForm extends Component{
 		return(
 			<form onSubmit={handleSubmit(this.formSubmit.bind(this))}>
 				<Field component={renderInput}
-					divClassName="form-group"
 					label="Title"
-					inputClassName = "form-input input-lg"
 					type = "text"
 					name = "title"	
 				/>
 				<Field component={renderInput}
 				label="Content"
-				divClassName="form-group"
-				inputClassName = "form-input input-lg"
 				type = "text"
 				name = "content"
 			/>
