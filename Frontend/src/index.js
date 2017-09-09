@@ -12,6 +12,7 @@ import ReduxPromise from "redux-promise";
 import Header from './containers/header';
 
 import reducers from "./reducers";
+import {AUTH_USER} from './actions/types';
 
 
 const createStoreWithMiddleware = applyMiddleware(ReduxThunk,ReduxPromise)(createStore);

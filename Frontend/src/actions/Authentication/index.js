@@ -32,9 +32,10 @@ export function signin(formValue,callback){
 	}
 }
 
-export function singout(){
+export function signout(callback){
 	localStorage.removeItem('token');
 	return (dispatch) =>{
 		dispatch({type:UNAUTH_USER});
+		callback();
 	}
 }

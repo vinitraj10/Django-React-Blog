@@ -4,7 +4,10 @@ import {
 	AUTH_ERROR
 } from '../actions/types';
 
-export default function(state={},action){
+const intialState = {
+	authenticated:false
+}
+export default function(state=intialState,action){
 	switch(action.type){
 		case AUTH_USER:
 			return {...state,authenticated:true};
