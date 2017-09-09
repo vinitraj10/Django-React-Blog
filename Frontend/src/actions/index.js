@@ -13,6 +13,8 @@ export const DELETED_POST = 'DELETED_POST';
 export const FETCHING_POST = 'FETCHING_POST';
 export const FETCHED_POST = 'FETCHED_POST';
 
+export const CHANGE_MODE = 'CHANGE_MODE';
+
 const root_url = "http://localhost:8000/";
 
 export function getBlogs(){
@@ -78,4 +80,9 @@ export function viewPost(id){
 			dispatch({type:FETCHED_POST,payload:response.data});
 		});
 	}
+}
+
+export function editPost(fromValue){
+	console.log(fromValue);
+	return{type:rand};
 }

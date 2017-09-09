@@ -12,6 +12,7 @@ import ReduxPromise from "redux-promise";
 import Main from "./components/main";
 import PostNew from "./containers/post_new";
 import ViewPost from './containers/view_post';
+import EditPost from './containers/edit_post';
 import reducers from "./reducers";
 
 const store = applyMiddleware(ReduxThunk,ReduxPromise)(createStore);
@@ -37,6 +38,7 @@ render(
 				<Route exact path="/" component={Main}/>
 				<Route path="/create_post" component= {PostNew} />
 				<Route path="/view_post/:id" component = {ViewPost}/>
+				<Route path="/edit_post/:id" component = {EditPost}/>
 			</div>	
 		</Router>
 	</Provider>

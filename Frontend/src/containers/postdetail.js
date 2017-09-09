@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {deletePost} from '../actions';
+import {changeMode} from '../actions';
 
 class PostDetail extends Component{
 	delete(){
@@ -9,10 +10,9 @@ class PostDetail extends Component{
 		this.props.deletePost(data.id,()=>{
 			this.props.data.history.push("/");
 		});
-
 	}
 	render(){
-		//console.log(this.props.data);
+
 		const {data} = this.props.data.post;
 		return(
 			<div className="panel">
@@ -24,7 +24,7 @@ class PostDetail extends Component{
 				</div>
 				<div className="panel-footer">
 				  	<div className="btn-group btn-group-block">
-                    <button className="btn btn-primary">Edit</button>
+                    <Link className="btn btn-primary" to={`/edit_post/${data.id}`}>Edit</Link>
                     <button className="btn" onClick={this.delete.bind(this)}>Delete</button>
                     <Link className="btn" to="/">Back</Link>
                   </div>
@@ -34,4 +34,4 @@ class PostDetail extends Component{
 	}
 }
 
-export default connect(null,{deletePost})(PostDetail);
+export default connect(null,{deletePost,changeMode})(PostDetail);

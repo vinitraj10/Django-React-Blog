@@ -2,7 +2,7 @@ import {
 	FETCHING_POST,
 	FETCHED_POST,
 	DELETING_POST,
-	DELETED_POST
+	DELETED_POST,
 } from '../actions';
 
 const intialState = {
@@ -25,7 +25,8 @@ export default function(state=intialState,action){
 				return {...state,deleting:true}
 				break;
 			case DELETED_POST:
-				return {...state,deleted:true}	
+				return {...state,deleted:true}
+				break;
 		}
 	return state;	
 }
