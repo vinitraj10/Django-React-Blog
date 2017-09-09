@@ -1,8 +1,15 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib.auth import get_user_model
+from rest_framework.generics import CreateAPIView
+from rest_framework.permissions import (
+	AllowAny
+)
 
-# Create your views here.
+from accounts.serializers import UserCreateSerializer
 
 
-def account(request):
-	return HttpResponse('hello')
+User=get_user_model()
+
+class UserCreateView(CreateAPIView):
+	queryset=User.objects.all()
+	serializer_class = UserCreateSerializer
+	permission_classes = [AllowAny]
