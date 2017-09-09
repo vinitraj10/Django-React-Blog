@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     #App
     'post',
-
+    'accounts',
     #requirements
 
     'rest_framework',
