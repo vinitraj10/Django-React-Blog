@@ -1,6 +1,7 @@
 import React,{Component} from "react";
+import {Link} from 'react-router-dom';
 
-export default class Posts extends Component{
+class Posts extends Component{
 	renderPost(post){
 		return(
 			<div className="column col-6"  key={post.id}>
@@ -12,7 +13,7 @@ export default class Posts extends Component{
 				    {post.content}
 				  </div>
 				  <div className="card-footer">
-				    <button className="btn btn-primary">Future uses</button>
+				    <Link className="btn btn-primary" to={`/view_post/${post.id}`}>View</Link>
 				  </div>
 				</div>
 			</div>
@@ -23,9 +24,10 @@ export default class Posts extends Component{
 		//console.log(posts)
 		return (
 			<div className="columns">
-				{posts.map(this.renderPost)}
+				{posts.map(this.renderPost.bind(this))}
 			</div>
 		)
 	}
 }
 
+export default Posts;

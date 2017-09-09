@@ -11,9 +11,10 @@ import ReduxPromise from "redux-promise";
 //file imports
 import Main from "./components/main";
 import PostNew from "./containers/post_new";
+import ViewPost from './containers/view_post';
 import reducers from "./reducers";
 
-const store = applyMiddleware(ReduxThunk,ReduxPromise)(createStore);
+const store = applyMiddleware(ReduxThunk,ReduxPromise,createLogger())(createStore);
 
 render(
 	<Provider store={store(reducers)}>
@@ -28,17 +29,14 @@ render(
 							    <Link to="/create_post" className="btn btn-warning">Create Post</Link>
 							  </section>
 							  <section className="navbar-section">
-							    <div className="input-group input-inline">
-							      <input className="form-input" type="text" placeholder="search" />
-							      <button className="btn btn-primary input-group-btn">Search</button>
-							    </div>
 							  </section>
 							</header>
 						</div>
 					</div>
 				</div>
 				<Route exact path="/" component={Main}/>
-				<Route path="/create_post" component={PostNew}/>
+				<Route path="/create_post" component= {PostNew} />
+				<Route path="/view_post/:id" component = {ViewPost}/>
 			</div>	
 		</Router>
 	</Provider>

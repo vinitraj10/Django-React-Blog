@@ -1,6 +1,7 @@
 import {FETCHING_BLOG} from "../actions";
 import {FETCHED_BLOG} from "../actions";
 import {ERROR} from "../actions";
+import {POST_DELETED} from "../actions";
 
 const intialState = {
 	isFetching:false,
@@ -19,6 +20,9 @@ export default function(state=intialState,action){
 			break;
 		case ERROR:
 			return {...state,isFetching:false,isFetched:false,error:action.payload};
+			break;
+		case POST_DELETED:
+			return {...state,posts:action.payload.data}
 			break;
 	}
 	return state;

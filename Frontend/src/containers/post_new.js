@@ -32,7 +32,7 @@ class PostNew extends Component{
 						    <Field component="textarea" name="content" className="form-input" id="input-example-3" placeholder="Textarea" rows="3"/>
 						 </div>
 						 <div className="form-group">
-						 	<button className="btn btn-primary" type="submit" id="vini">default button </button>
+						 	<button className="btn btn-primary" type="submit" id="vini">Post</button>
 						 	<Link to="/" className="btn btn-default"> Cancel</Link>
 						 </div>
 					</form>

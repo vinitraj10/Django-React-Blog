@@ -7,9 +7,12 @@ export const ERROR = "ERROR";
 export const CREATING_POST = "CREATING_POST";
 export const CREATED_POST = "CREATE_POST";
 
+export const POST_DELETING = 'POST_DELETING';
+
+const root_url = "http://localhost:8000/";
+
 export function getBlogs(){
-	const root_url = "http://localhost:8000/";
-	const sub_url = "api/blog/";
+	const sub_url = "blog/api/";
 	const url = `${root_url}${sub_url}`;
 	
 	const request = axios.get(url);
@@ -27,8 +30,7 @@ export function getBlogs(){
 }
 
 export function createPost(fromValue){
-	const root_url = "http://localhost:8000/";
-	const sub_url = "api/blog/create";
+	const sub_url = "blog/api/create/";
 	const url = `${root_url}${sub_url}`;
 	//console.log(props);
 
