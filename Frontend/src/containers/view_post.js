@@ -1,16 +1,29 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
+import {viewPost} from '../actions';
+
+import Loading from "../components/loading";
+import PostDetail from "../containers/postdetail";
 
 class ViewPost extends Component{
-	componentDidMount() {
+	componentWillMount() {
 		const {id} = this.props.match.params;
-		console.log(id);
+		this.props.viewPost(id);
 	}
 	render(){
+		const {isFetching,isFetched,data} = this.props.post;
 		return(
-			<h1>View Post</h1>
-		);
+			<div className="container">
+				{isFetching?<Loading/>:(isFetched?<PostDetail data={data}/>:<Loading/>)}
+			</div>
+		)
 	}
 }
 
-export default ViewPost;
+function mapStateToProps(state){
+	return{
+		post:state.post
+	}
+}
+
+export default connect(mapStateToProps,{viewPost})(ViewPost);

@@ -14,7 +14,7 @@ import PostNew from "./containers/post_new";
 import ViewPost from './containers/view_post';
 import reducers from "./reducers";
 
-const store = applyMiddleware(ReduxThunk,ReduxPromise,createLogger())(createStore);
+const store = applyMiddleware(ReduxThunk,ReduxPromise)(createStore);
 
 render(
 	<Provider store={store(reducers)}>

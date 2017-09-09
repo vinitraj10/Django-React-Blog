@@ -1,5 +1,5 @@
-import {FETCHING_BLOG} from "../actions";
-import {FETCHED_BLOG} from "../actions";
+import {FETCHING_BLOGS} from "../actions";
+import {FETCHED_BLOGS} from "../actions";
 import {ERROR} from "../actions";
 import {POST_DELETED} from "../actions";
 
@@ -12,10 +12,10 @@ const intialState = {
 
 export default function(state=intialState,action){
 	switch(action.type){
-		case FETCHING_BLOG:
+		case FETCHING_BLOGS:
 			return {...state,isFetching:true};
 			break;
-		case FETCHED_BLOG:
+		case FETCHED_BLOGS:
 			return {...state,isFetching:false,isFetched:true,posts:action.payload.data};
 			break;
 		case ERROR:
