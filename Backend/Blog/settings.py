@@ -25,7 +25,7 @@ SECRET_KEY = 'w=9z=a##*hd2w$@qn!%2r@k!v66+c4-2y)z&o&1+u-b8+2kbq@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['f9ee65d3.ngrok.io','localhost','127.0.0.1']
 
 
 # Application definition
@@ -37,15 +37,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    'rest_framework.authtoken',
+    'rest_auth',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
     #App
     'post',
     'accounts',
     #requirements
     'rest_framework',
-    'corsheaders',
-
+    'corsheaders', 
 ]
 
+SITE_ID = 2
+REST_USE_JWT = True
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
@@ -54,7 +64,6 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        #'rest_framework.authentication.BasicAuthentication',
     ),
 }
 
@@ -62,6 +71,16 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=172800),
     'JWT_RESPONSE_PAYLOAD_HANDLER':'accounts.views.jwt_response_payload_handler'
 }
+
+AUTHENTICATION_BACKENDS = (
+    
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+   
+)
 
 
 MIDDLEWARE_CLASSES = [
@@ -89,6 +108,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
