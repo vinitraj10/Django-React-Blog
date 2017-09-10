@@ -15,7 +15,7 @@ import {signout} from '../actions/Authentication';
 class Header extends Component{
 	logoutUser(){
 		this.props.signout(()=>{
-			this.props.history.push('/');
+			this.props.history.push('/signin');
 		})
 	}
 	renderAuthMode(authenticated){

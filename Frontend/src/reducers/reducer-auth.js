@@ -1,7 +1,7 @@
 import {
 	AUTH_USER,
 	UNAUTH_USER,
-	AUTH_ERROR
+	SIGNUP_USER
 } from '../actions/types';
 
 const intialState = {
@@ -15,8 +15,8 @@ export default function(state=intialState,action){
 		case UNAUTH_USER:
 			return {...state,authenticated:false};
 			break;
-		case AUTH_ERROR:
-			return {...state,error:action.payload}
+		case SIGNUP_USER:
+			return {...state,authenticated:true}
 			break;
 	}
 	return state;

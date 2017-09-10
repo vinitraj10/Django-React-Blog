@@ -11,8 +11,27 @@ class PostDetail extends Component{
 			this.props.data.history.push("/");
 		});
 	}
+	renderEditButton(){
+		const {data} = this.props.data.post;
+		const owner = data.author;
+		const requestUser = localStorage.getItem('username');
+		if(owner==requestUser){
+			return (
+				<Link className="btn" to={`/edit_post/${data.id}`}>Edit</Link>
+			)
+		} 
+	}
+	renderDeleteButton(){
+		const {data} = this.props.data.post;
+		const owner = data.author;
+		const requestUser = localStorage.getItem('username');
+		if(owner==requestUser){
+			return (
+				<button className="btn" onClick={this.delete.bind(this)}>Delete</button>
+			)
+		} 
+	}
 	render(){
-
 		const {data} = this.props.data.post;
 		return(
 			<div className="panel">
@@ -24,9 +43,9 @@ class PostDetail extends Component{
 				</div>
 				<div className="panel-footer">
 				  	<div className="btn-group btn-group-block">
-                    <Link className="btn btn-primary" to={`/edit_post/${data.id}`}>Edit</Link>
-                    <button className="btn" onClick={this.delete.bind(this)}>Delete</button>
-                    <Link className="btn" to="/">Back</Link>
+                   		{this.renderEditButton()}
+                   		{this.renderDeleteButton()}
+                    <Link className="btn " to="/">Back</Link>
                   </div>
 				</div>
 			</div>

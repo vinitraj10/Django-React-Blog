@@ -16,6 +16,7 @@ export const FETCHED_POST = 'FETCHED_POST';
 export const EDITING_POST = 'EDITING_POST';
 export const EDITED_POST = 'EDITED_POST';
 
+import {tokenHeader} from '../utils/headers';
 
 const root_url = "http://localhost:8000/";
 
@@ -23,7 +24,7 @@ export function getBlogs(){
 	const sub_url = "blog/api/";
 	const url = `${root_url}${sub_url}`;
 	
-	const request = axios.get(url);
+	const request = axios.get(url,tokenHeader());
 
 	return (dispatch) =>{
 		dispatch({type:FETCHING_BLOGS});
@@ -43,7 +44,7 @@ export function createPost(fromValue,callback){
 	//console.log(props);
 
 	const request = axios
-		.post(url,fromValue)
+		.post(url,fromValue,tokenHeader())
 		.then(() => callback());
 
 	return {
@@ -62,7 +63,7 @@ export function createPost(fromValue,callback){
 export function deletePost(id,callback){
 	const sub_url = `blog/api/delete/${id}`;
 	const url = `${root_url}${sub_url}`;
-	const request = axios.delete(url);
+	const request = axios.delete(url,tokenHeader());
 
 	return (dispatch) => {
 		dispatch({type:DELETING_POST});
@@ -77,7 +78,7 @@ export function deletePost(id,callback){
 export function viewPost(id){
 	const sub_url = `blog/api/detail/${id}`;
 	const url = `${root_url}${sub_url}`;
-	const request = axios.get(url);
+	const request = axios.get(url,tokenHeader());
 	return (dispatch) =>{
 		dispatch({type:FETCHING_POST});
 		request.then((response)=>{
@@ -90,7 +91,7 @@ export function editPost(fromValue,id,callback){
 	console.log(fromValue);
 	const sub_url = `blog/api/update/${id}/`;
 	const url = `${root_url}${sub_url}`;
-	const request = axios.put(url,fromValue);
+	const request = axios.put(url,fromValue,tokenHeader());
 	return (dispatch) =>{
 		dispatch({type:EDITING_POST});
 		request.then((response)=>{

@@ -2,7 +2,7 @@ import axios from 'axios';
 import {
 	AUTH_USER,
 	UNAUTH_USER,
-	AUTH_ERROR
+	SIGNUP_USER
 } from '../types';
 
 const ROOT_URL = 'http://localhost:8000/accounts/api/';
@@ -12,8 +12,11 @@ export function signup(formValue,callback){
 	return (dispatch) =>{
 		axios.post(URL,formValue)
 		.then((response)=>{
-			dispatch({type:AUTH_USER});
+			const{username}= response.data;
+			console.log(username);
+			dispatch({type:SIGNUP_USER});
 			localStorage.setItem('token',response.data.token);
+			localStorage.setItem('username',username);
 			callback();
 		});
 	}
@@ -25,8 +28,10 @@ export function signin(formValue,callback){
 	return (dispatch) => {
 		axios.post(URL,formValue)
 		.then((response)=>{
+			const {username}=response.data.user;
 			dispatch({type:AUTH_USER});
 			localStorage.setItem('token',response.data.token);
+			localStorage.setItem('username',username);
 			callback();
 		});
 	}
