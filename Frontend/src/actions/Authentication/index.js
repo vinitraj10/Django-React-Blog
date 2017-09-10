@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
 	AUTH_USER,
 	UNAUTH_USER,
-	SIGNUP_USER
+	SIGNUP_USER,
+	AUTH_ERROR
 } from '../types';
 
 const ROOT_URL = 'http://localhost:8000/accounts/api/';
@@ -18,13 +19,16 @@ export function signup(formValue,callback){
 			localStorage.setItem('token',response.data.token);
 			localStorage.setItem('username',username);
 			callback();
-		});
+		})
+		.catch((error)=>{
+			dispatch({type:AUTH_ERROR,payload:'ERROR OCCURED USERNAME MAY EXISTS IN DATABASE'});
+		})
 	}
 
 }
 
 export function signin(formValue,callback){
-	const URL =`${ROOT_URL}auth/token/`
+	const URL =`${ROOT_URL}home/login/token/`
 	return (dispatch) => {
 		axios.post(URL,formValue)
 		.then((response)=>{
@@ -33,7 +37,10 @@ export function signin(formValue,callback){
 			localStorage.setItem('token',response.data.token);
 			localStorage.setItem('username',username);
 			callback();
-		});
+		})
+		.catch((err)=>{
+			dispatch({type:AUTH_ERROR,payload:'BAD LOGIN CREDENTIALS'});
+		})
 	}
 }
 

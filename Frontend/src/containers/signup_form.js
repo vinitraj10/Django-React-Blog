@@ -16,12 +16,14 @@ class Signup extends Component{
 
 	render(){
 		const {handleSubmit} = this.props;
+		const {signupError} = this.props.auth;
 		return(
 			<form onSubmit={handleSubmit(this.formSubmit.bind(this))}>
 				<Field component={renderInput} label="Email" name="email" type="Email"/>
 				<Field component={renderInput} label="Username" name="username" type="text"/>
 				<Field component={renderInput} label="Password" name="password" type="password"/>
 				<div className="form-group">
+					{signupError?(<div className="form-group"><span className="label label-error">{signupError}</span></div>):""}
 					<button className="btn btn-primary">Signup</button>
 				</div>
 			</form>
@@ -36,4 +38,9 @@ Signup = reduxForm({
 
 Signup = withRouter(Signup); 
 
-export default connect(null,{signup})(Signup);
+function mapStateToProps(state){
+	return{
+		auth:state.auth
+	}
+}
+export default connect(mapStateToProps,{signup})(Signup);

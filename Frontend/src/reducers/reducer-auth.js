@@ -1,11 +1,16 @@
 import {
 	AUTH_USER,
 	UNAUTH_USER,
-	SIGNUP_USER
+	SIGNUP_USER,
+	AUTH_ERROR,
+	SIGNUP_ERROR
+
 } from '../actions/types';
 
 const intialState = {
-	authenticated:false
+	authenticated:false,
+	loginError:null,
+	signupError:null
 }
 export default function(state=intialState,action){
 	switch(action.type){
@@ -15,8 +20,12 @@ export default function(state=intialState,action){
 		case UNAUTH_USER:
 			return {...state,authenticated:false};
 			break;
-		case SIGNUP_USER:
-			return {...state,authenticated:true}
+		case AUTH_ERROR:
+			return {...state,authenticated:false,loginError:action.payload,signupError:null}
+			break;
+
+		case SIGNUP_ERROR:
+			return {...state,authenticated:true,loginError:null,signupError:action.payload}
 			break;
 	}
 	return state;
