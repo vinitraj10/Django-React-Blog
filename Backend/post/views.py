@@ -16,12 +16,13 @@ from post.serializers import (
 	PostDetailSerializer
 )
 from post.models import Post
-
+from post.permissions import IsOwnerOrReadOnly
 
 class PostCreateView(CreateAPIView):
-	queryset=Post.objects.all()
 	serializer_class=PostCreateSerializer
-
+	def perform_create(self,serializer):
+		serializer.save(author=self.request.user)
+		
 class PostDeleteView(DestroyAPIView):
 	queryset=Post.objects.all()
 	serializer_class=PostListSerializer
@@ -39,5 +40,6 @@ class PostDetailView(RetrieveAPIView):
 class PostUpdateView(RetrieveUpdateAPIView):
 	queryset=Post.objects.all()
 	serializer_class=PostCreateSerializer
+	permission_classes = [IsOwnerOrReadOnly]
 	lookup_field='pk'
 
