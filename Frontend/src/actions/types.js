@@ -6,3 +6,5 @@ export const SINGUP_ERROR = 'signup_error';
 
 
 export const UNAUTH_USER = 'unauth_user';
+
+export const LOGIN_BY_FB = 'login_by_fb';

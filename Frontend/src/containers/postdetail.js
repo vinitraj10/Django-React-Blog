@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {deletePost} from '../actions';
 import {changeMode} from '../actions';
+import moment from 'moment';
 
 class PostDetail extends Component{
 	delete(){
@@ -33,10 +34,14 @@ class PostDetail extends Component{
 	}
 	render(){
 		const {data} = this.props.data.post;
+		console.log(data);
+		const time = moment(data.published).format("MMM Do YY") 
 		return(
 			<div className="panel">
 				<div className="panel-header">
-					<div className="panel-title">{data.title}</div>
+					<div className="panel-subtitle float-right">Posted:-{time}</div>
+					<div className="panel-title h5 mt-10">{data.title}</div>
+					<div className="panel-subtitle">By:-{data.author}</div>
 				  	</div>
 				<div className="panel-body">
 				   <p>{data.content}</p>

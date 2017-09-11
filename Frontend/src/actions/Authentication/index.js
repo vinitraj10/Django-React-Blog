@@ -46,6 +46,7 @@ export function signin(formValue,callback){
 
 export function signout(callback){
 	localStorage.removeItem('token');
+	localStorage.removeItem('username');
 	return (dispatch) =>{
 		dispatch({type:UNAUTH_USER});
 		callback();
