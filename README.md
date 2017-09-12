@@ -1,3 +1,10 @@
+# Demo
+
+Backend-API-ENDPOINTS =><a href="http://djminapi.herokuapp.com"> API</a>
+
+Frontend(Main Application) => <a href="http://djmin.herokuapp.com"> Application</a>
+
+
 # Overview
 This application helps the user to Read,Create,Delete,Update the Blog post,The app uses django for the server side and React for the client side of the application.
 
