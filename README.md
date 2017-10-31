@@ -1,6 +1,6 @@
 # Demo
 
-Backend-API - <a href="http://djminapi.herokuapp.com"> API</a>
+<a href="http://djminapi.herokuapp.com">Backend API</a>
 
 Frontend-Application - <a href="http://djmin.herokuapp.com"> Application</a>
 
