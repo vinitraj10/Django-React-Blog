@@ -43,12 +43,12 @@ pip install -r requirements.txt
 ```
 Make Migrations:-
 ```
-python manage.py makemigrations
-python manage.py migrate
+./manage.py makemigrations
+./manage.py migrate
 ```
 Start server for your REST-API:-
 ```
-python manage.py runserver
+./manage.py runserver
 ```
 # Frontend Setup:-
 Go to root and Open another terminal window
