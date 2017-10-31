@@ -1,8 +1,8 @@
 # Demo
 
-Backend-API-ENDPOINTS =><a href="http://djminapi.herokuapp.com"> API</a>
+Backend-API-ENDPOINTS - <a href="http://djminapi.herokuapp.com"> API</a>
 
-Frontend(Main Application) => <a href="http://djmin.herokuapp.com"> Application</a>
+Frontend-Applicatn - <a href="http://djmin.herokuapp.com"> Application</a>
 
 
 # Overview
