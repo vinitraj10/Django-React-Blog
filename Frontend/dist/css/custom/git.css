@@ -1,0 +1,35 @@
+.content{
+	padding-top: 50px;
+}
+.label{
+	background: #dbdbdf;
+}
+.btn.btn-primary{
+	background: #3d7db5;
+	border-color: #3d7db5;
+}
+form a{
+	margin-left: 10px;
+}
+
+
+.columns-signin{
+	padding: 40px;
+}
+
+.btn.btn-fb{
+	background: #3b5998;
+	color:#fff;
+	border-color:#3b5998;
+}
+
+.btn.btn-google{
+	background: #dd4b39;
+	color: #fff;
+	border-color:#dd4b39;
+}
+
+.love-footer{
+	padding: 20px;
+	margin: 20px;
+}

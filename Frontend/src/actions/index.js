@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const FETCHING_BLOGS = "FETCHING_BLOGS";
-export const FETCHED_BLOGS = "FETCHED_BLOGS";
+export const FETCHING_PRODUCTS = "FETCHING_PRODUCTS";
+export const FETCHED_PRODUCTS = "FETCHED_PRODUCTS";
 export const ERROR = "ERROR";
 
 export const CREATING_POST = "CREATING_POST";
@@ -18,18 +18,16 @@ export const EDITED_POST = 'EDITED_POST';
 
 import {tokenHeader} from '../utils/headers';
 
-const root_url = "http://localhost:8000/";
+const root_url = "http://localhost:8000/shop/";
 
-export function getBlogs(){
-	const sub_url = "blog/api/";
-	const url = `${root_url}${sub_url}`;
-	
+export function getProducts(){
+	const url = `${root_url}`;
 	const request = axios.get(url,tokenHeader());
 
 	return (dispatch) =>{
-		dispatch({type:FETCHING_BLOGS});
+		dispatch({type:FETCHING_PRODUCTS});
 		request.then((response)=>{
-			dispatch({type:FETCHED_BLOGS,payload:response});
+			dispatch({type:FETCHED_PRODUCTS,payload:response.data});
 		})
 		.catch((err)=>{
 			dispatch({type:ERROR,payload:err});

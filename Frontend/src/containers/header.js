@@ -1,13 +1,9 @@
 import React,{Component} from 'react';
 import {Link,Route,withRouter} from 'react-router-dom'
 import {connect} from 'react-redux';
-import Blogs from "./post_index";
-import PostNew from "./post_new";
-import ViewPost from './view_post';
-import EditPost from './edit_post';
 import Signup from './signup_form';
 import Signin from './signin_form';
-
+import Shop from './shop';
 import requireAuth from './HOC/authenticate';
 
 import {signout} from '../actions/Authentication';
@@ -51,12 +47,9 @@ class Header extends Component{
 						</div>
 					</div>
 				</div>
-				<Route exact path="/" component={requireAuth(Blogs)}/>
+				<Route exact path = "/" component = {Shop}/>
 				<Route path = "/signup" component ={Signup}/>
 				<Route path = "/signin" component ={Signin}/>
-				<Route path = "/create_post" component= {requireAuth(PostNew)}/>
-				<Route path = "/view_post/:id" component = {requireAuth(ViewPost)}/>
-				<Route path = "/edit_post/:id" component = {requireAuth(EditPost)}/>
 			</div>	
 		);
 	}
