@@ -19,7 +19,7 @@ from accounts.views import FacebookLogin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-   # url(r'^shop/',include('shop.urls'),name='shop'),
+    url(r'^shop/',include('shop.urls'),name='shop'),
     url(r'^accounts/api/',include('accounts.urls')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^rest-auth/', include('rest_auth.urls')),

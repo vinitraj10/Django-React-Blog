@@ -13,8 +13,11 @@ class Product(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product)
+    product = models.ManyToManyField(Product)
 
+    def __str__(self):
+    	return str(self.user)
+    	
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
