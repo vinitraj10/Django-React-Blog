@@ -4,21 +4,13 @@
 # Overview
 This application is a simple sho where user can buy the products and rate there buyed product,edit there ratings and get overall average rating of any product.
 
-<h3>Feautures:-</h3>
+<h3>Instructions:-</h3>
 <ul>
-<li>Single Page App</li>
-<li>Create Post</li>
-<li>Read Post</li>
-<li>Update Post</li>
-<li>Delete Post</li>
+<li>1.)Only admin can add products.</li>
+<li>2.)You need to logged in to buy products</li>
+<li>3.)User can only rate there buyed product</li>
+<li>4.)User can edit there given ratings</li>
 </ul>
-
-Instructions:-
-1.)Only admin can add products.
-2.)You need to logged in to buy products
-3.)User can only rate there buyed product
-4.)User can edit there given ratings
-
 # Backend-Setup 
 ```
 Create Virtual env for django-part:-
