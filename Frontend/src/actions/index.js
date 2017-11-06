@@ -2,19 +2,14 @@ import axios from "axios";
 
 export const FETCHING_PRODUCTS = "FETCHING_PRODUCTS";
 export const FETCHED_PRODUCTS = "FETCHED_PRODUCTS";
-export const ERROR = "ERROR";
 
-export const CREATING_POST = "CREATING_POST";
-export const CREATED_POST = "CREATE_POST";
+export const FETCHING_PRODUCT = 'FETCHING_PRODUCT';
+export const FETCHED_PRODUCT = 'FETCHED_PRODUCT';
 
-export const DELETING_POST = 'DELETING_POST';
-export const DELETED_POST = 'DELETED_POST';
+export const FETCHED_RATING = 'FETCHED_RATING';
 
-export const FETCHING_POST = 'FETCHING_POST';
-export const FETCHED_POST = 'FETCHED_POST';
-
-export const EDITING_POST = 'EDITING_POST';
-export const EDITED_POST = 'EDITED_POST';
+export const FETCHING_MYORDER = 'FETCHING_MYORDER';
+export const FETCHED_MYORDER = 'FETCHED_MYORDER';
 
 import {tokenHeader} from '../utils/headers';
 
@@ -36,65 +31,74 @@ export function getProducts(){
 
 }
 
-export function createPost(fromValue,callback){
-	const sub_url = "blog/api/create/";
-	const url = `${root_url}${sub_url}`;
-	//console.log(props);
-
-	const request = axios
-		.post(url,fromValue,tokenHeader())
-		.then(() => callback());
-
-	return {
-		type:CREATED_POST,
-		payload:request
-	}
-	/*return (dispatch) => {
-		dispatch({type:CREATING_POST});
-		request.then((response)=>{
-			dispatch({type:CREATED_POST,payload:response.data});
-		});
-	}*/
-
-}
-
-export function deletePost(id,callback){
-	const sub_url = `blog/api/delete/${id}`;
-	const url = `${root_url}${sub_url}`;
-	const request = axios.delete(url,tokenHeader());
-
-	return (dispatch) => {
-		dispatch({type:DELETING_POST});
-		request.then(()=>{
-			dispatch({type:DELETED_POST});
-			callback();
-		});
-	}
-
-}
-
-export function viewPost(id){
-	const sub_url = `blog/api/detail/${id}`;
+export function viewProduct(id){
+	const sub_url = `detail/${id}/product/`;
 	const url = `${root_url}${sub_url}`;
 	const request = axios.get(url,tokenHeader());
 	return (dispatch) =>{
-		dispatch({type:FETCHING_POST});
+		dispatch({type:FETCHING_PRODUCT});
 		request.then((response)=>{
-			dispatch({type:FETCHED_POST,payload:response.data});
+			dispatch({type:FETCHED_PRODUCT,payload:response.data});
 		});
 	}
 }
 
-export function editPost(fromValue,id,callback){
-	console.log(fromValue);
-	const sub_url = `blog/api/update/${id}/`;
+
+export function buyProduct(id,callback){
+	const sub_url = `buy/${id}/product/`;
 	const url = `${root_url}${sub_url}`;
-	const request = axios.put(url,fromValue,tokenHeader());
-	return (dispatch) =>{
-		dispatch({type:EDITING_POST});
-		request.then((response)=>{
-			dispatch({type:EDITED_POST});
-			callback();
-		});
+	const request = axios.post(url,null,tokenHeader());
+	request.then(()=>{
+		callback();
+	})
+	return {
+		type:"Product_Buy"
+	};
+
+}
+
+export function getAvgRating(id){
+	const url = `${root_url}getavgrating/${id}/product/`;
+	return (dispatch) => {
+		axios.get(url,tokenHeader())
+		.then((response)=>{
+			dispatch({type:FETCHED_RATING,payload:response.data.value})
+		})
 	}
+}
+
+export function getMyOrders(){
+	const url = `${root_url}myorders/`;
+	return (dispatch) => {
+		dispatch({type:FETCHING_MYORDER});
+		axios.get(url,tokenHeader())
+		.then((response)=>{	
+			dispatch({type:FETCHED_MYORDER,payload:response.data})
+		})
+	}
+}
+
+export function postRating(id,value,callback){
+	const url = `${root_url}rate/${id}/product/`;
+	axios.post(url,value,tokenHeader())
+	.then((response)=>{
+		callback();
+	})
+}
+
+export function editRating(id,value,callback){
+	const url = `${root_url}editmyrating/${id}/product/`;
+	axios.post(url,value,tokenHeader())
+	.then((response)=>{
+		callback();
+	})
+}
+
+export function getAllRating(id){
+	const url = `${root_url}myrating/`;
+	dispatch({type:FETCHING_RATINGS})
+	axios.get(url)
+	.then((response)=>{
+		dispatch({type:FETCHED_RATINGS,payload:response.data})
+	})
 }

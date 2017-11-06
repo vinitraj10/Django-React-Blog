@@ -4,8 +4,9 @@ import {connect} from 'react-redux';
 import Signup from './signup_form';
 import Signin from './signin_form';
 import Shop from './shop';
+import ViewProduct from './shop/viewproduct';
 import requireAuth from './HOC/authenticate';
-
+import Myorders from './myorders';
 import {signout} from '../actions/Authentication';
 
 class Header extends Component{
@@ -40,7 +41,7 @@ class Header extends Component{
 						 	<header className="navbar">
 								<section className="navbar-section">
 								   <Link to="/" className="btn btn-link">Home</Link>
-								   {authenticated?(<Link to="/create_post" className="btn btn-link">Create Post</Link>):""}
+								   {authenticated?(<Link to="/myorders" className="btn btn-link">My Orders</Link>):""}
 								</section>
 								{this.renderAuthMode(authenticated)}
 							</header>
@@ -50,6 +51,8 @@ class Header extends Component{
 				<Route exact path = "/" component = {Shop}/>
 				<Route path = "/signup" component ={Signup}/>
 				<Route path = "/signin" component ={Signin}/>
+				<Route path = "/myorders" component = {Myorders}/>
+				<Route path = "/view_product/:id" component= {ViewProduct}/>
 			</div>	
 		);
 	}
