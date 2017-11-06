@@ -14,7 +14,8 @@ class Ratings extends Component {
 		const {isFetching,isFetched,products} = this.props.myratings;
 		console.log(products);
 		return (
-			<div>
+			<div className="container">
+				<div className="text-center"><h1>MY RATINGS</h1></div>
 				{isFetching?(<Loading/>):(isFetched?(<Rating products={products}/>):(<Err/>))}
 			</div>
 		)

@@ -10,7 +10,7 @@ class Avg extends Component {
 	render(){
 		const {value} = this.props.avgrating;
 		return(
-			<div>{value?(<h4>{value}</h4>):("")}</div>
+			<div>{value?(<h4>Average Rating:{value}</h4>):(<h4>Average Rating:0.00</h4>)}</div>
 		);
 	}
 }

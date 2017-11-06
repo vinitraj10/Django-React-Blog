@@ -13,6 +13,7 @@ class Shop extends Component {
 		const {isFetched,isFetching,products} = this.props.shop;
 		return (
 			<div className="container">
+				<div className="text-center"><h1>THE SHOP</h1></div>
 				{isFetching?(<Loading/>):(isFetched?(<Products products={products}/>):(<Err/>))}	
 			</div>
 		);

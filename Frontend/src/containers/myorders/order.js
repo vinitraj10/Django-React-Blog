@@ -21,9 +21,17 @@ class Products extends Component {
 	}
 	render() {
 		const {products} = this.props;
+		console.log(products.length)
+		if(products.length > 0){
+			return (
+				<div className="columns">
+					{products.map(this.renderProduct.bind(this))}
+				</div>
+			);
+		}
 		return (
-			<div className="columns">
-				{products.map(this.renderProduct.bind(this))}
+			<div>
+				<h4>You Dont have any orders Yet please buy something from store</h4>
 			</div>
 		);
 	}

@@ -14,6 +14,7 @@ class Myorders extends Component {
 		const {isFetched,isFetching,product} = this.props.myorders;
 		return (
 			<div className="container">
+				<div className="text-center"><h1>MY ORDERS</h1></div>
 				{isFetching?(<Loading/>):(isFetched?(<Order products={product}/>):(<Err/>))}	
 			</div>
 		);
