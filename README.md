@@ -10,15 +10,17 @@ This application is a simple sho where user can buy the products and rate there 
 </ul>
 
 # Backend-Setup 
-```
+
 Create Virtual env for django-part:-
+
 ```
-cd Django-React-Blog
 virtualenv app
+
 ```
 Activate Virtual env:-
 ```
 app\scripts\activate
+
 ```
 Install Dependencies:-
 ```
