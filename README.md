@@ -1,12 +1,8 @@
-# Demo
 
-<a href="http://djminapi.herokuapp.com"> Backend api</a>
-
-<a href="http://djmin.herokuapp.com"> Main application</a>
 
 
 # Overview
-This application helps the user to Read,Create,Delete,Update the Blog post,The app uses django for the server side and React for the client side of the application.
+This application is a simple sho where user can buy the products and rate there buyed product,edit there ratings and get overall average rating of any product.
 
 <h3>Feautures:-</h3>
 <ul>
@@ -17,15 +13,13 @@ This application helps the user to Read,Create,Delete,Update the Blog post,The a
 <li>Delete Post</li>
 </ul>
 
-Anyone Can add post or delete post,The app doesn't contain any authentication,This is just a Simple blog,The main motive of this app is to learn how to call api's in react and manage the state of the application to update the view.
-
-Please follow the setup instrutions as follow in order to view the complete app we need to setup our backend and frontend separately so be carefull otherwise there could be problems.
+Instructions:-
+1.)Only admin can add products.
+2.)You need to logged in to buy products
+3.)User can only rate there buyed product
+4.)User can edit there given ratings
 
 # Backend-Setup 
-
-clone the repositroy:-
-```
-git clone https://github.com/vinitraj10/Django-React-Blog 
 ```
 Create Virtual env for django-part:-
 ```
