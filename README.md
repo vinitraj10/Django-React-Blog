@@ -1,6 +1,3 @@
-
-
-
 # Overview
 This application is a simple sho where user can buy the products and rate there buyed product,edit there ratings and get overall average rating of any product.
 
@@ -11,6 +8,7 @@ This application is a simple sho where user can buy the products and rate there 
 <li>3.)User can only rate there buyed product</li>
 <li>4.)User can edit there given ratings</li>
 </ul>
+
 # Backend-Setup 
 ```
 Create Virtual env for django-part:-
