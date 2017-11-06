@@ -11,6 +11,9 @@ export const FETCHED_RATING = 'FETCHED_RATING';
 export const FETCHING_MYORDER = 'FETCHING_MYORDER';
 export const FETCHED_MYORDER = 'FETCHED_MYORDER';
 
+export const FETCHING_RATINGS = 'FETCHING_RATINGS';
+export const FETCHED_RATINGS = 'FETCHED_RATINGS';
+
 import {tokenHeader} from '../utils/headers';
 
 const root_url = "http://localhost:8000/shop/";
@@ -84,6 +87,10 @@ export function postRating(id,value,callback){
 	.then((response)=>{
 		callback();
 	})
+
+	return {
+		type:"postrating"
+	}
 }
 
 export function editRating(id,value,callback){
@@ -92,13 +99,19 @@ export function editRating(id,value,callback){
 	.then((response)=>{
 		callback();
 	})
+
+	return {
+		type: "editmyrating"
+	}
 }
 
-export function getAllRating(id){
+export function getAllRatings(id){
 	const url = `${root_url}myrating/`;
-	dispatch({type:FETCHING_RATINGS})
-	axios.get(url)
-	.then((response)=>{
-		dispatch({type:FETCHED_RATINGS,payload:response.data})
-	})
+	return (dispatch)=>{
+		dispatch({type:FETCHING_RATINGS})
+		axios.get(url,tokenHeader())
+		.then((response)=>{
+			dispatch({type:FETCHED_RATINGS,payload:response.data})
+		})
+	}
 }

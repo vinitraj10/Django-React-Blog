@@ -7,13 +7,13 @@ class Products extends Component {
 			<div className="column col-6"  key={product.id}>
 				<div className="card">
 				  <div className="card-header">
-				    <h4 className="card-subtitle">{product.title}</h4>
+				    <h4 className="card-title">{product.product}</h4>
 				  </div>
 				  <div className="card-body">
-				    {product.cost}
+				    {product.value}
 				  </div>
 				  <div className="card-footer">
-				    <Link className="btn btn-primary" to={`submit/rating/${product.id}`}>Rate Now</Link>
+				    <Link className="btn btn-primary" to={`/edit/rating/${product.id}`}>Edit</Link>
 				  </div>
 				</div>
 			</div>
@@ -21,12 +21,23 @@ class Products extends Component {
 	}
 	render() {
 		const {products} = this.props;
+		length = products.length;
+		//console.log(length)
+		if(length>0){
+			return (
+				<div className="columns">
+						{products.map(this.renderProduct.bind(this))}
+				</div>
+			)
+		}
 		return (
-			<div className="columns">
-				{products.map(this.renderProduct.bind(this))}
+			<div className="centered">
+				<h2>You have not rated any products</h2>
 			</div>
-		);
+		)
 	}
 }
 
 export default Products;
+
+	
