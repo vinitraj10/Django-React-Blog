@@ -1,3 +1,5 @@
+// @flow
+import express from 'express';
 import axios from 'axios';
 import { tokenHeader } from '../utils/headers';
 
