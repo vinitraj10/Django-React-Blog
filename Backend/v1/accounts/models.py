@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     college = models.CharField(max_length=200)
-    pictue = models.FileField(upload_to='profile_pic/')
+    picture = models.FileField(upload_to='profile_pic/')
 
     class Meta:
        verbose_name_plural='Profile'
