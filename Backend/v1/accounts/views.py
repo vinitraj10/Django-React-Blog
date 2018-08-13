@@ -11,7 +11,7 @@ from v1.accounts.validators.logvalidator import (
     check_credentials
 )
 from v1.accounts.models import Profile
-# Registeration Function
+# Registration Function
 @csrf_exempt
 def register(req):
     if req.method == 'POST':

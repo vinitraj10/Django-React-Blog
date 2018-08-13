@@ -4,5 +4,5 @@ urlpatterns = [
 	url(r'^auth/register/',views.register),
 	url(r'^auth/login/',views.login),
 	url(r'^update/profile/',views.update_profile),
-	url(r'^getmyprofile/',views.get_my_profile)
+	url(r'^getmyprofile/',views.get_my_profile),
 ]
