@@ -7,10 +7,20 @@ from v1.accounts.validators.regvalidator import (
     check_email,
     check_username
 )
+
 from v1.accounts.validators.logvalidator import (
     check_credentials
 )
-from v1.accounts.models import Profile
+
+from v1.accounts.models import (
+    Profile,
+    HasSkill
+)
+
+from v1.accounts.utility.profile import (
+    get_my_profile_skills,
+    skill_is_in_profile
+)
 # Registration Function
 @csrf_exempt
 def register(req):
@@ -86,6 +96,19 @@ def update_profile(req):
         return JsonResponse({'success':'Profile Updated'})
     return JsonResponse({'error':'Method Not Allowed'})
 
+@csrf_exempt
+def update_profile_skills(req):
+    if req.method == 'PUT':
+        data = json.loads(req.body)
+        username = data['username']
+        skill = data['skill']
+        user = User.objects.get(username=username)
+        profile = Profile.objects.get(user=user)
+        flag = skill_is_in_profile(skill,profile)
+        if flag[0]:
+            return JsonResponse({'skills':flag[1]})
+        else:
+            return JsonResponse({'error':flag[1]})
 # Design a decorator for checking authentication
 def get_my_profile(req):
     user = User.objects.get(username='raj10')
@@ -93,9 +116,11 @@ def get_my_profile(req):
     username = profile.user.username
     college = profile.college
     picture = json.dumps(str(profile.picture))
+    skills = get_my_profile_skills(profile) # return list of skills from object.
     data = {
         'username':username,
         'college':college,
-        'picture':picture
+        'picture':picture,
+        'skills':skills
     }
     return JsonResponse(data)
