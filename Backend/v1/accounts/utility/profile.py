@@ -4,15 +4,24 @@ from v1.accounts.models import (
     HasSkill,
 )
 
-def get_my_profile_skills(profile):
-    skills = []
+def skills_to_list(profile):
+    my_skills = []
     for each in profile.hasskill_set.all():
-        skills.append(each.skill.name)
-    return skills
+        my_skills.append(each.skill.name)
+    return my_skills
+
+def get_my_profile_skills(profile):
+    my_skills = []
+    for each in profile.hasskill_set.all():
+        my_skills.append({
+                'id':each.skill.id,
+                'name':each.skill.name
+        })
+    return my_skills
 
 def skill_is_in_profile(skill,profile):
-    profile_skills = get_my_profile_skills(profile)
-    if skill.upper() not in profile_skills:
+    my_profile_skills = skills_to_list(profile)
+    if skill.upper() not in my_profile_skills:
         try:
             # get skill from database of the name provided by user
             skill_db = Skill.objects.get(name = skill.upper())

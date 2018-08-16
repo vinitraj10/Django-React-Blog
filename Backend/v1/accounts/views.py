@@ -109,6 +109,11 @@ def update_profile_skills(req):
             return JsonResponse({'skills':flag[1]})
         else:
             return JsonResponse({'error':flag[1]})
+    elif req.method == 'DELETE':
+        return JsonResponse({})
+    else:
+        return JsonResponse({'error':'Method Not Allowed'})
+
 # Design a decorator for checking authentication
 def get_my_profile(req):
     user = User.objects.get(username='raj10')
