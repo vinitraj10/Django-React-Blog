@@ -14,6 +14,7 @@ from v1.accounts.validators.logvalidator import (
 
 from v1.accounts.models import (
     Profile,
+    Skill,
     HasSkill
 )
 
@@ -93,8 +94,8 @@ def update_profile(req):
         profile.college = college
         profile.picture = picture
         profile.save()
-        return JsonResponse({'success':'Profile Updated'})
-    return JsonResponse({'error':'Method Not Allowed'})
+        return JsonResponse({'success':'Profile Updated'},status=200)
+    return JsonResponse({'error':'Method Not Allowed'},status=405)
 
 @csrf_exempt
 def update_profile_skills(req):
@@ -106,11 +107,19 @@ def update_profile_skills(req):
         profile = Profile.objects.get(user=user)
         flag = skill_is_in_profile(skill,profile)
         if flag[0]:
-            return JsonResponse({'skills':flag[1]})
+            return JsonResponse({'skills':flag[1]},status=200)
         else:
-            return JsonResponse({'error':flag[1]})
+            return JsonResponse({'error':flag[1]},status=403)
     elif req.method == 'DELETE':
-        return JsonResponse({})
+        data = json.loads(req.body)
+        username = data['username']
+        skill_id = data['skill_id']
+        user = User.objects.get(username=username)
+        profile = Profile.objects.get(user=user)
+        skill = Skill.objects.get(id=skill_id)
+        skill_from_profile = HasSkill.objects.get(profile=profile,skill=skill)
+        skill_from_profile.delete()
+        return JsonResponse({'success':'Succesfully Deleted'},status=200)
     else:
         return JsonResponse({'error':'Method Not Allowed'})
 
@@ -128,4 +137,4 @@ def get_my_profile(req):
         'picture':picture,
         'skills':skills
     }
-    return JsonResponse(data)
+    return JsonResponse(data,status=200)
