@@ -15,7 +15,8 @@ from v1.accounts.validators.logvalidator import (
 from v1.accounts.models import (
     Profile,
     Skill,
-    HasSkill
+    HasSkill,
+    Following
 )
 
 from v1.accounts.utility.profile import (
@@ -138,3 +139,24 @@ def get_my_profile(req):
         'skills':skills
     }
     return JsonResponse(data,status=200)
+
+@csrf_exempt
+def follow_profile(req):
+    if req.method == 'POST':
+        data = json.loads(req.body)
+        username = data['username']
+        follower = data['follower']
+        profile = User.objects.get(username=username)
+        follower = User.objects.get(username=follower)
+        try:
+            following = Following.objects.get(profile=profile,follower=follower)
+            return JsonResponse({'msg':'already following'})
+        except Exception as e:
+            following = Following.objects.create(profile=profile,follower=follower)
+            return JsonResponse({'msg':'following'})
+    else:
+        return JsonResponse({'error':'Method Not Allowed'})
+
+def get_user_profile(req):
+
+    return JsonResponse({})

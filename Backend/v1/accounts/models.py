@@ -2,6 +2,16 @@ from django.db import models
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 
+class Following(models.Model):
+    profile = models.ForeignKey(User,on_delete=models.CASCADE)
+    follower = models.ForeignKey(
+                            User,
+                            on_delete=models.CASCADE,
+                            related_name='follower'
+                )
+    def __str__(self):
+        return str(self.profile.username) + ' ' + str(self.follower.username)
+
 class Profile(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     college = models.CharField(max_length=200)
@@ -17,7 +27,6 @@ class Skill(models.Model):
 
     def __str__(self):
         return str(self.name)
-
 
 class HasSkill(models.Model):
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE)

@@ -6,4 +6,6 @@ urlpatterns = [
 	url(r'^update/profile/$',views.update_profile),
 	url(r'^update/profile/skills/',views.update_profile_skills),
 	url(r'^getmyprofile/$',views.get_my_profile),
+	url(r'^follow/$',views.follow_profile),
+	url(r'^getuserprofile/')
 ]
