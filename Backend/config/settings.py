@@ -38,49 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-
-    'rest_framework.authtoken',
-    'rest_auth',
-
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
-    #App
     'v1.post',
     'v1.accounts',
-    #requirements
-    'rest_framework',
     'corsheaders',
 ]
 
 SITE_ID = 2
-REST_USE_JWT = True
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-    ),
-}
-
-JWT_AUTH = {
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=172800),
-    'JWT_RESPONSE_PAYLOAD_HANDLER':'v1.accounts.views.jwt_response_payload_handler'
-}
-
-AUTHENTICATION_BACKENDS = (
-
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
-
-)
 
 
 MIDDLEWARE_CLASSES = [
@@ -165,6 +128,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CORS_ORIGIN_ALLOW_ALL=True
 CORS_ALLOW_HEADERS = [
