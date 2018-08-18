@@ -1,11 +1,16 @@
-from django.conf.urls import url,include
-from v1.accounts import views
+from django.urls import path
+from v1.accounts.views.signup import signup_view
+from v1.accounts.views.signin import signin_view
+from v1.accounts.views.update_profile import update_profile_view
+from v1.accounts.views.update_profile_skills import update_profile_skills_view
+from v1.accounts.views.follow import follow_view
+from v1.accounts.views.unfollow import unfollow_view
+
 urlpatterns = [
-	url(r'^auth/register/$',views.register),
-	url(r'^auth/login/$',views.login),
-	url(r'^auth/github/$',views.github),
-	url(r'^update/profile/$',views.update_profile),
-	url(r'^update/profile/skills/',views.update_profile_skills),
-	url(r'^follow/$',views.follow_profile),
-	url(r'^unfollow/$',views.unfollow_profile),
+	path('auth/signup/',signup_view),
+	path('auth/signin/',signin_view),
+	path('update/profile/',update_profile_view),
+	path('update/profile/skills/',update_profile_skills_view),
+	path('follow/',follow_view),
+	path('unfollow/',unfollow_view)
 ]
