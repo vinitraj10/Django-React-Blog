@@ -1,8 +1,12 @@
 import json
+import jwt
 import requests
+from datetime import datetime
 from decouple import config
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
+from v1.accounts.models import Profile
 from v1.accounts.utility.oauth import oauth_create_or_get_token
 
 @csrf_exempt
@@ -22,6 +26,5 @@ def github(req):
     user_url = 'https://api.github.com/user?access_token='+ access_token
     git_user_response = requests.get(user_url).json()
     email = git_user_response['email']
-    token = oauth_create_or_get_token(email)
-    print(token)
-    return JsonResponse({'token':token})
+    oauth_resp = oauth_create_or_get_token(email)
+    return JsonResponse({'token':oauth_resp[0],'username':oauth_resp[1]})
