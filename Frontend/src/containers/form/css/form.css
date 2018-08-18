@@ -1,0 +1,30 @@
+.panel {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.panel-title h2{
+	background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.btn-estimate {
+	background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+	border-style: none;
+	border-radius:12px;
+	cursor: pointer;
+	color:white;
+	outline: none;
+	box-sizing: border-box;
+	padding:16px;
+	margin-right:4px;
+	width:100%;
+}
+
+.cities_background {
+    position: absolute;
+    opacity: .2;
+    background-image: url(https://shadowfax.in/assets/images/about-us/cities.png);
+    background-size: cover;
+}

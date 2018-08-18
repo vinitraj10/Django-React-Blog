@@ -1,0 +1,12 @@
+.content {
+	padding:24px;
+}
+.body {
+	width: 100%;
+	height: 350px;
+	background-image: linear-gradient(to left, #5f89ff, #953db9);
+	padding:100px;	
+}
+.body > h1 {
+	color:white;
+}

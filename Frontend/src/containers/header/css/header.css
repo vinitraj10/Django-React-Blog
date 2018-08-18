@@ -1,0 +1,26 @@
+.navbar {
+	padding:16px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.btn.btn-link {
+	color:#4f56b5c7;
+}
+.btn.btn-primary {
+	background:#8dd955;
+	border-color:#8dd955;
+}
+.btn.btn-primary:hover{
+	background:#85bd5d;
+	border-color:#85bd5d;
+}
+.link {
+	margin-left:15px;
+}
+.cart,.cart:hover,.cart:active,.cart:focus{
+	vertical-align: center;
+	text-decoration: none;
+	outline: none;
+}
+.logo {
+	padding:5px;
+}
