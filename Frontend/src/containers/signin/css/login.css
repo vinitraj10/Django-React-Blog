@@ -1,7 +1,34 @@
-.login{
-  margin-top: 10px;
-  padding:100px;
-  border:1px solid #ddd;
+.content {
+  margin-top: 25px;
+}
+.panel-header {
+  background: #4dd998;
+}
+.panel-header h3 {
+  color:white;
+}
+.btn-si {
   width:100%;
-  height: 500px;
+  background-position: 1em;
+  background-repeat: no-repeat;
+  background-size: 2em;
+  border-radius: 0.5em;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1em;
+  height: 4em;
+  line-height: 1em;
+  padding: 0 2em 0 4em;
+  text-decoration: none;
+  transition: all 0.5s; }
+.btn-github {
+  background-color: #2a2a2a;
+  background-image: url("http://vagnersantana.com/social-signin-btns/img/github.svg");
+ }
+.btn-github:hover {
+    background-color: #444444;
+ }
+.btn-github:active {
+    background-color: #101010;
 }
