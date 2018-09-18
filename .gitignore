@@ -61,7 +61,7 @@ typings/
 
 
 
-#Virtualenv 
+#Virtualenv
 app/
 
 # Byte-compiled / optimized / DLL files
@@ -76,7 +76,6 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
