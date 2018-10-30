@@ -1,8 +1,7 @@
-from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
 from rest_auth.registration.views import SocialLoginView
-
 from django.contrib.auth import get_user_model
 from rest_framework.generics import CreateAPIView
+from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
 from rest_framework.permissions import (
 	AllowAny
 )
@@ -17,9 +16,9 @@ from accounts.serializers import (
 User=get_user_model()
 
 class UserCreateView(CreateAPIView):
-	queryset=User.objects.all()
+	queryset = User.objects.all()
 	serializer_class = UserCreateSerializer
-	permission_classes = [AllowAny]
+	permission_classes = (AllowAny, )
 
 
 def jwt_response_payload_handler(token, user=None, request=None):
