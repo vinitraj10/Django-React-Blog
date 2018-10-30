@@ -41,6 +41,10 @@ package-lock.json
 # Typescript v1 declaration files
 typings/
 
+# python enviornment
+venv/
+env/
+
 # Optional npm cache directory
 .npm
 
