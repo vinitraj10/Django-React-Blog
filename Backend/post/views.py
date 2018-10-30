@@ -1,3 +1,5 @@
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework.generics import (
 	CreateAPIView,
 	DestroyAPIView,
@@ -5,6 +7,7 @@ from rest_framework.generics import (
 	RetrieveAPIView,
 	RetrieveUpdateAPIView
 )
+from django.shortcuts import get_list_or_404
 from rest_framework.permissions import(
 	IsAuthenticatedOrReadOnly
 )
@@ -42,7 +45,16 @@ class PostDetailView(RetrieveAPIView):
 
 
 class PostUpdateView(RetrieveUpdateAPIView):
+	lookup_field = 'pk'
 	queryset = Post.objects.all()
 	serializer_class = PostCreateSerializer
-	permission_classes = (IsOwnerOrReadOnly, )
-	lookup_field = 'pk'
+	permission_classes = (IsOwnerOrReadOnly,)
+
+
+class AuthorPostView(APIView):
+
+	@staticmethod
+	def get(request, username):
+		posts = get_list_or_404(Post, author__username=username)
+		post_data = PostListSerializer(posts, many=True)
+		return Response(post_data.data)
