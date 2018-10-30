@@ -1,35 +1,34 @@
+from post.models import Post
 from rest_framework.serializers import (
 	ModelSerializer,
-	SerializerMethodField
+	StringRelatedField
 )
-from post.models import Post
-
 
 
 class PostListSerializer(ModelSerializer):
-	author = SerializerMethodField()
+	
+	author = StringRelatedField()
+	
 	class Meta:
-		model=Post
-		fields=['id','title','content','author','published']
+		model = Post
+		fields = ('id', 'title', 'content', 'author', 'published')
 
-	def get_author(self,obj):
-		return str(obj.author.username)
 
 class PostDetailSerializer(ModelSerializer):
-	author = SerializerMethodField()
-	class Meta:
-		model=Post
-		fields=['id','title','content','published','author','published']
-		lookup_field='pk'
 
-	def get_author(self,obj):
-		return str(obj.author.username)
+	author = StringRelatedField()
+
+	class Meta:
+
+		model = Post
+		lookup_field = 'pk'
+		fields = ('id', 'title', 'content', 'published', 'author', 'published')
+
 
 class PostCreateSerializer(ModelSerializer):
-	author = SerializerMethodField()
-	class Meta:
-		model=Post
-		fields=['title','content','author','published']
 	
-	def get_author(self,obj):
-		return str(obj.author.username)
+	author = StringRelatedField()
+	
+	class Meta:
+		model = Post
+		fields = ('title', 'content', 'author', 'published')
