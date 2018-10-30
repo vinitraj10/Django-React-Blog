@@ -51,11 +51,13 @@ INSTALLED_APPS = [
     'accounts',
     #requirements
     'rest_framework',
-    'corsheaders', 
+    'corsheaders',
 ]
 
 SITE_ID = 2
-REST_USE_JWT = True
+
+sREST_USE_JWT = True
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
@@ -73,13 +75,13 @@ JWT_AUTH = {
 }
 
 AUTHENTICATION_BACKENDS = (
-    
+
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
 
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
-   
+
 )
 
 
@@ -167,6 +169,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CORS_ORIGIN_ALLOW_ALL=True
+
 CORS_ALLOW_HEADERS = [
     'accept',
     'accept-encoding',
@@ -178,13 +181,8 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
+
 CORS_ORIGIN_WHITELIST = (
     'google.com',
     'localhost:8080'
 )
-
-
-'''
-
-
-'''
