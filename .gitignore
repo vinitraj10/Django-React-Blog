@@ -6,6 +6,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 db.sqlite3
+package-lock.json
 # Runtime data
 pids
 *.pid
@@ -60,7 +61,7 @@ typings/
 
 
 
-#Virtualenv 
+#Virtualenv
 app/
 
 # Byte-compiled / optimized / DLL files
@@ -75,7 +76,6 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
