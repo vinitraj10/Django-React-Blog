@@ -1,4 +1,4 @@
-from post.models import Post
+from v1.post.models import Post
 from rest_framework.serializers import (
 	ModelSerializer,
 	StringRelatedField

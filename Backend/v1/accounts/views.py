@@ -7,7 +7,7 @@ from rest_framework.permissions import (
 )
 
 
-from accounts.serializers import (
+from v1.accounts.serializers import (
 	UserCreateSerializer,
 	UserSerializer,
 )

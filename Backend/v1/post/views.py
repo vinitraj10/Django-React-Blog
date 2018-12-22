@@ -11,13 +11,13 @@ from django.shortcuts import get_list_or_404
 from rest_framework.permissions import(
 	IsAuthenticatedOrReadOnly
 )
-from post.serializers import (
+from v1.post.serializers import (
 	PostCreateSerializer,
 	PostListSerializer,
 	PostDetailSerializer
 )
-from post.models import Post
-from post.permissions import IsOwnerOrReadOnly
+from v1.post.models import Post
+from v1.post.permissions import IsOwnerOrReadOnly
 
 
 class PostCreateView(CreateAPIView):

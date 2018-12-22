@@ -47,8 +47,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     #App
-    'post',
-    'accounts',
+    'v1.post',
+    'v1.accounts',
     #requirements
     'rest_framework',
     'corsheaders',
@@ -71,7 +71,7 @@ REST_FRAMEWORK = {
 
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=172800),
-    'JWT_RESPONSE_PAYLOAD_HANDLER':'accounts.views.jwt_response_payload_handler'
+    'JWT_RESPONSE_PAYLOAD_HANDLER':'v1.accounts.views.jwt_response_payload_handler'
 }
 
 AUTHENTICATION_BACKENDS = (
@@ -97,7 +97,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Blog.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -116,7 +116,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Blog.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
