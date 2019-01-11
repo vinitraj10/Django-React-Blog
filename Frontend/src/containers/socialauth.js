@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {loginUsingFb} from '../actions/authentication/social-auth';
+import {loginUsingFb} from '../actions/Authentication/social-auth';
 
 class SocialAuth extends Component{
   loadFbLoginApi() {
