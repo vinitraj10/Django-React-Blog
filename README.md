@@ -2,7 +2,7 @@
 
 <a href="http://djminapi.herokuapp.com"> Backend api</a>
 
-<a href="http://djmin.herokuapp.com"> Main application</a>
+<a href="http://djmin.netlify.com"> Main application</a>
 
 
 # Overview
