@@ -6,7 +6,7 @@ import {
 	AUTH_ERROR
 } from '../types';
 
-const ROOT_URL = 'http://localhost:8000/accounts/api/';
+const ROOT_URL = 'https://djminapi.herokuapp.com/accounts/api/';
 
 export function signup(formValue,callback){
 	const URL = `${ROOT_URL}register/`;

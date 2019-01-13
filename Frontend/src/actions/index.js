@@ -18,7 +18,7 @@ export const EDITED_POST = 'EDITED_POST';
 
 import {tokenHeader} from '../utils/headers';
 
-const root_url = "http://localhost:8000/";
+const root_url = "https://djminapi.herokuapp.com/";
 
 export function getBlogs(){
 	const sub_url = "blog/api/";
