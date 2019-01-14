@@ -1,9 +1,9 @@
 import axios from 'axios';
 import {
-	AUTH_USER,
-	UNAUTH_USER,
-	SIGNUP_USER,
-	AUTH_ERROR
+  AUTH_USER,
+  UNAUTH_USER,
+  SIGNUP_USER,
+  AUTH_ERROR
 } from '../types';
 
 const ROOT_URL = 'https://djminapi.herokuapp.com/accounts/api/';
