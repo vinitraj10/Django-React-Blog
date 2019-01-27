@@ -1,11 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
+import { tokenHeader } from '../utils/headers';
 
-export const FETCHING_BLOGS = "FETCHING_BLOGS";
-export const FETCHED_BLOGS = "FETCHED_BLOGS";
-export const ERROR = "ERROR";
+export const FETCHING_BLOGS = 'FETCHING_BLOGS';
+export const FETCHED_BLOGS = 'FETCHED_BLOGS';
+export const ERROR = 'ERROR';
 
-export const CREATING_POST = "CREATING_POST";
-export const CREATED_POST = "CREATE_POST";
+export const CREATING_POST = 'CREATING_POST';
+export const CREATED_POST = 'CREATE_POST';
 
 export const DELETING_POST = 'DELETING_POST';
 export const DELETED_POST = 'DELETED_POST';
@@ -16,14 +17,12 @@ export const FETCHED_POST = 'FETCHED_POST';
 export const EDITING_POST = 'EDITING_POST';
 export const EDITED_POST = 'EDITED_POST';
 
-import {tokenHeader} from '../utils/headers';
-
 const root_url = 'https://djminapi.herokuapp.com/';
 
 export function getBlogs(){
-	const sub_url = "blog/api/";
+	const sub_url = 'blog/api/';
 	const url = `${root_url}${sub_url}`;
-	
+
 	const request = axios.get(url,tokenHeader());
 
 	return (dispatch) =>{
@@ -39,7 +38,7 @@ export function getBlogs(){
 }
 
 export function createPost(fromValue,callback){
-	const sub_url = "blog/api/create/";
+	const sub_url = 'blog/api/create/';
 	const url = `${root_url}${sub_url}`;
 	//console.log(props);
 
