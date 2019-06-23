@@ -19,83 +19,80 @@ export const EDITED_POST = 'EDITED_POST';
 
 const root_url = 'https://djminapi.herokuapp.com/';
 
-export function getBlogs(){
-	const sub_url = 'blog/api/';
-	const url = `${root_url}${sub_url}`;
+export function getBlogs() {
+  const sub_url = 'blog/api/';
+  const url = `${root_url}${sub_url}`;
 
-	const request = axios.get(url,tokenHeader());
+  const request = axios.get(url, tokenHeader());
 
-	return (dispatch) =>{
-		dispatch({type:FETCHING_BLOGS});
-		request.then((response)=>{
-			dispatch({type:FETCHED_BLOGS,payload:response});
-		})
-		.catch((err)=>{
-			dispatch({type:ERROR,payload:err});
-		})
-	};
-
+  return (dispatch) => {
+    dispatch({ type: FETCHING_BLOGS });
+    request.then((response) => {
+      dispatch({ type: FETCHED_BLOGS, payload: response });
+    })
+      .catch((err) => {
+        dispatch({ type: ERROR, payload: err });
+      });
+  };
 }
 
-export function createPost(fromValue,callback){
-	const sub_url = 'blog/api/create/';
-	const url = `${root_url}${sub_url}`;
-	//console.log(props);
+export function createPost(fromValue, callback) {
+  const sub_url = 'blog/api/create/';
+  const url = `${root_url}${sub_url}`;
+  // console.log(props);
+  console.log(tokenHeader());
+  const request = axios
+    .post(url, fromValue, tokenHeader())
+    .then(() => callback());
 
-	const request = axios
-		.post(url,fromValue,tokenHeader())
-		.then(() => callback());
-
-	return {
-		type:CREATED_POST,
-		payload:request
-	}
-	/*return (dispatch) => {
+  return {
+    type: CREATED_POST,
+    payload: request,
+  };
+  /* return (dispatch) => {
 		dispatch({type:CREATING_POST});
 		request.then((response)=>{
 			dispatch({type:CREATED_POST,payload:response.data});
 		});
-	}*/
-
+	} */
 }
 
-export function deletePost(id,callback){
-	const sub_url = `blog/api/delete/${id}`;
-	const url = `${root_url}${sub_url}`;
-	const request = axios.delete(url,tokenHeader());
+export function deletePost(id, callback) {
+  const sub_url = `blog/api/delete/${id}`;
+  const url = `${root_url}${sub_url}`;
+  const request = axios.delete(url, tokenHeader());
 
-	return (dispatch) => {
-		dispatch({type:DELETING_POST});
-		request.then(()=>{
-			dispatch({type:DELETED_POST});
-			callback();
-		});
-	}
-
+  return (dispatch) => {
+    dispatch({ type: DELETING_POST });
+    request.then(() => {
+      dispatch({ type: DELETED_POST });
+      callback();
+    });
+  };
 }
 
-export function viewPost(id){
-	const sub_url = `blog/api/detail/${id}`;
-	const url = `${root_url}${sub_url}`;
-	const request = axios.get(url,tokenHeader());
-	return (dispatch) =>{
-		dispatch({type:FETCHING_POST});
-		request.then((response)=>{
-			dispatch({type:FETCHED_POST,payload:response.data});
-		});
-	}
+export function viewPost(id) {
+  const sub_url = `blog/api/detail/${id}`;
+  const url = `${root_url}${sub_url}`;
+  const request = axios.get(url, tokenHeader());
+  return (dispatch) => {
+    dispatch({ type: FETCHING_POST });
+    request.then((response) => {
+      dispatch({ type: FETCHED_POST, payload: response.data });
+    });
+  };
 }
 
-export function editPost(fromValue,id,callback){
-	console.log(fromValue);
-	const sub_url = `blog/api/update/${id}/`;
-	const url = `${root_url}${sub_url}`;
-	const request = axios.put(url,fromValue,tokenHeader());
-	return (dispatch) =>{
-		dispatch({type:EDITING_POST});
-		request.then((response)=>{
-			dispatch({type:EDITED_POST});
-			callback();
-		});
-	}
+export function editPost(fromValue, id, callback) {
+  console.log(fromValue);
+  const sub_url = `blog/api/update/${id}/`;
+  const url = `${root_url}${sub_url}`;
+  const request = axios.put(url, fromValue, tokenHeader());
+  return (dispatch) => {
+    dispatch({ type: EDITING_POST });
+    request.then((response) => {
+      dispatch({ type: EDITED_POST });
+      callback();
+    });
+  };
 }

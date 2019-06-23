@@ -4,8 +4,14 @@ import {withRouter} from 'react-router-dom';
 import {Field,reduxForm} from 'redux-form';
 import {renderInput} from '../utils/redux-form-fields';
 import {signin} from '../actions/Authentication';
-import SocialAuth from './socialauth';
+
 class Signin extends Component{
+	componentDidMount() {
+		const { authenticated } = this.props.auth;
+		if(authenticated){
+			this.props.history.push("/");
+		}
+	}
 	formSubmit(formValue){
 		this.props.signin(formValue,()=>{
 			this.props.history.push("/");

@@ -24,7 +24,7 @@ export default function(state=intialState,action){
 			return {...state,authenticated:false,loginError:action.payload,signupError:null}
 			break;
 
-		case SIGNUP_ERROR:
+		case SIGNUP_USER:
 			return {...state,authenticated:true,loginError:null,signupError:action.payload}
 			break;
 	}
