@@ -1,6 +1,4 @@
 import React from 'react';
-
-
 const Loading = () => (
   <div className="columns">
     <div className="column col-xs-6">

@@ -1,3 +1,4 @@
+/* eslint-disable no-tabs */
 import axios from 'axios';
 import { tokenHeader } from '../utils/headers';
 
@@ -17,11 +18,11 @@ export const FETCHED_POST = 'FETCHED_POST';
 export const EDITING_POST = 'EDITING_POST';
 export const EDITED_POST = 'EDITED_POST';
 
-const root_url = 'https://djminapi.herokuapp.com/';
+const ROOT_URL = 'https://djminapi.herokuapp.com/';
 
 export function getBlogs() {
-  const sub_url = 'blog/api/';
-  const url = `${root_url}${sub_url}`;
+  const SUB_URL = 'blog/api/';
+  const url = `${ROOT_URL}${SUB_URL}`;
 
   const request = axios.get(url, tokenHeader());
 
@@ -37,8 +38,8 @@ export function getBlogs() {
 }
 
 export function createPost(fromValue, callback) {
-  const sub_url = 'blog/api/create/';
-  const url = `${root_url}${sub_url}`;
+  const SUB_URL = 'blog/api/create/';
+  const url = `${ROOT_URL}${SUB_URL}`;
   // console.log(props);
   console.log(tokenHeader());
   const request = axios
@@ -50,7 +51,7 @@ export function createPost(fromValue, callback) {
     payload: request,
   };
   /* return (dispatch) => {
-		dispatch({type:CREATING_POST});
+	  dispatch({type:CREATING_POST});
 		request.then((response)=>{
 			dispatch({type:CREATED_POST,payload:response.data});
 		});
@@ -58,8 +59,8 @@ export function createPost(fromValue, callback) {
 }
 
 export function deletePost(id, callback) {
-  const sub_url = `blog/api/delete/${id}`;
-  const url = `${root_url}${sub_url}`;
+  const SUB_URL = `blog/api/delete/${id}`;
+  const url = `${ROOT_URL}${SUB_URL}`;
   const request = axios.delete(url, tokenHeader());
 
   return (dispatch) => {
@@ -72,8 +73,8 @@ export function deletePost(id, callback) {
 }
 
 export function viewPost(id) {
-  const sub_url = `blog/api/detail/${id}`;
-  const url = `${root_url}${sub_url}`;
+  const SUB_URL = `blog/api/detail/${id}`;
+  const url = `${ROOT_URL}${SUB_URL}`;
   const request = axios.get(url, tokenHeader());
   return (dispatch) => {
     dispatch({ type: FETCHING_POST });
@@ -85,8 +86,8 @@ export function viewPost(id) {
 
 export function editPost(fromValue, id, callback) {
   console.log(fromValue);
-  const sub_url = `blog/api/update/${id}/`;
-  const url = `${root_url}${sub_url}`;
+  const SUB_URL = `blog/api/update/${id}/`;
+  const url = `${ROOT_URL}${SUB_URL}`;
   const request = axios.put(url, fromValue, tokenHeader());
   return (dispatch) => {
     dispatch({ type: EDITING_POST });
