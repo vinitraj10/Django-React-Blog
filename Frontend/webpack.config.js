@@ -12,7 +12,7 @@ const config = {
   ],
   output: {
     path: BUILD_DIR,
-    publicPath: '/dist/js',
+    publicPath: '/dist/js/',
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js',
   },
