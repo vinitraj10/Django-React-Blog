@@ -10,7 +10,7 @@ class EditForm extends Component {
     const { data } = this.props.data;
     this.props.initialize({
       title: data.title,
-      content: data.content,
+      content: data.content
     });
   }
 
@@ -28,12 +28,7 @@ class EditForm extends Component {
     // console.log(this.props);
     return (
       <form onSubmit={handleSubmit(this.formSubmit.bind(this))}>
-        <Field
-          component={renderInput}
-          label="Title"
-          type="text"
-          name="title"
-        />
+        <Field component={renderInput} label="Title" type="text" name="title" />
         <Field
           component={renderInput}
           label="Content"
@@ -41,8 +36,13 @@ class EditForm extends Component {
           name="content"
         />
         <div className="form-group">
-          <button className="btn btn-primary" type="submit">Save</button>
-          <Link to={`/view_post/${data.id}`} className="btn btn-default"> Cancel</Link>
+          <button className="btn btn-primary" type="submit">
+            Save
+          </button>
+          <Link to={`/view_post/${data.id}`} className="btn btn-default">
+            {' '}
+            Cancel
+          </Link>
         </div>
       </form>
     );
@@ -52,8 +52,10 @@ class EditForm extends Component {
 EditForm = withRouter(EditForm);
 EditForm = reduxForm({
   form: 'EditForm',
-  fields: ['title', 'content'],
+  fields: ['title', 'content']
 })(EditForm);
 
-
-export default connect(null, { editPost })(EditForm);
+export default connect(
+  null,
+  { editPost }
+)(EditForm);
